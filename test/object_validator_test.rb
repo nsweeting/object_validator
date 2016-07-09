@@ -16,7 +16,6 @@ class ObjectValidatorTest < Minitest::Test
     person.name = nil
     refute person.valid?
     assert person.errors.all.key?(:name)
-    byebug
   end
 
   def test_presence_false_check
