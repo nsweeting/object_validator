@@ -1,5 +1,7 @@
 # ObjectValidator
 
+[![Code Climate](https://codeclimate.com/github/nsweeting/object_validator/badges/gpa.svg)](https://codeclimate.com/github/nsweeting/object_validator)
+
 ObjectValidator is a set of simple module mixins for validating Plain Old Ruby Object data. A lightweight alternative to ActiveModel. As of now it has small set of validations - but these are easily extensible.
 
 ## Installation
