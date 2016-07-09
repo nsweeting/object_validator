@@ -1,19 +1,18 @@
 module ObjectValidator
   module Validate
     def valid?
-      @validator = validator_klass.new(self)
-      @validator.valid?
+      validator.valid?
     end
 
     def errors
       return Errors.new unless defined?(@validator)
-      @validator.errors
+      validator.errors
     end
 
     private
 
-    def validator_klass
-      @validator_klass ||= Object.const_get("#{self.class.name}Validator")
+    def validator
+      @validator ||= Object.const_get("#{self.class.name}Validator").new(self)
     end
   end
 end
