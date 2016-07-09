@@ -2,7 +2,6 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'object_validator'
 
 require 'minitest/autorun'
-require 'byebug'
 
 class PersonValidator
   include ObjectValidator::Validator
@@ -15,7 +14,6 @@ class PersonValidator
   validates :name, with: { proc: proc { |p| p.name = 'Billy Bob'},
                            name: 'is not Billy Bob' }
 end
-
 
 class Person
   include ObjectValidator::Validate
@@ -30,20 +28,4 @@ class Person
     @blank_var = nil
     @test_string = 'Hello!'
   end
-end
-
-
-class Person2
-  include ObjectValidator::Validate
-
-  attr_accessor :name, :email, :details, :age, :uri
-end
-
-class Person2Validator
-  include ObjectValidator::Validator
-
-  validates :name, presence: true, type: String
-  validates :details, keys: [:number, :street, :phone]
-  validates :age, greater_than: 0
-  validates :uri, with: { proc: proc { |p| p.uri.length > 5 }, msg: 'is too short!' }
 end
